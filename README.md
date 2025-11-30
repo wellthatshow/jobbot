@@ -56,6 +56,7 @@ It combines structured scraping + Telegram workflow + live filtering — package
     Job + user actions are logged to Google Sheets
 
 🛠️ Setup
+
         1️⃣ Install dependencies
         pip install -r requirements.txt
 
