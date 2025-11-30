@@ -16,7 +16,6 @@ from db import (
     set_setting, get_setting
 )
 from parsers.dou import parse_dou
-from parsers.linkedin import parse_linkedin
 from sheets import log_job_row, log_action
 from filters import (
     get_filters,
@@ -321,7 +320,7 @@ async def fetch_and_send_jobs():
     if not PARSING_ENABLED:
         return
 
-    parsers = (parse_dou, parse_linkedin)
+    parsers = (parse_dou,)
     all_jobs = []
 
     for p in parsers:
