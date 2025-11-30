@@ -7,53 +7,53 @@ It combines structured scraping + Telegram workflow + live filtering — package
 🚀 Features
 🔎 Data Collection
 
-Receives Djinni job posts via Telegram forwarding
+    Receives Djinni job posts via Telegram forwarding
 
-Scrapes DOU job listings
+    Scrapes DOU job listings
 
-Normalizes data into a unified job format
+    Normalizes data into a unified job format
 
 🎯 Smart Filtering
 
-Experience level
+    Experience level
 
-Salary range
+    Salary range
 
-Location (Remote / UA / EU / Worldwide)
+    Location (Remote / UA / EU / Worldwide)
 
-Tech stack (SQL/DWH, BI tools)
+    Tech stack (SQL/DWH, BI tools)
 
-Salary presence (optional)
+    Salary presence (optional)
 
 📬 Delivery
 
-Sends only matching vacancies to the user
+    Sends only matching vacancies to the user
 
-Interactive inline buttons: Good / Maybe / Ignore
+    Interactive inline buttons: Good / Maybe / Ignore
 
-Logs actions & jobs to Google Sheets
+    Logs actions & jobs to Google Sheets
 
 ⚙️ Automation
 
-Scheduled parsing via APScheduler
+    Scheduled parsing via APScheduler
 
-Persistent filter settings via SQLite
+    Persistent filter settings via SQLite
 
-Fully containerized with Docker
+    Fully containerized with Docker
 
 🧠 How It Works
 
-User sets filters (experience, salary, location, stack)
+    User sets filters (experience, salary, location, stack)
 
-Bot receives jobs from Djinni (forward) or scrapes DOU
+    Bot receives jobs from Djinni (forward) or scrapes DOU
 
-Job is normalized & stored in SQLite
+    Job is normalized & stored in SQLite
 
-Match is evaluated via filter engine
+    Match is evaluated via filter engine
 
-If relevant → sent to user with action buttons
+    If relevant → sent to user with action buttons
 
-Job + user actions are logged to Google Sheets
+    Job + user actions are logged to Google Sheets
 
 🛠️ Setup
 1️⃣ Install dependencies
@@ -73,28 +73,27 @@ docker run -d jobbot
 
 🧩 Tech Stack
 
-Python (Aiogram, APScheduler, BeautifulSoup)
+    Python (Aiogram, APScheduler, BeautifulSoup)
 
-SQLite (lightweight persistent storage)
+    SQLite (lightweight persistent storage)
 
-Google Sheets API
+    Google Sheets API
 
-Docker
+    Docker
 
-Railway (deploy)
 
 ⭐ Why This Project Matters
 
-This bot demonstrates practical automation for analysts:
+    This bot demonstrates practical automation for analysts:
 
-End-to-end ETL pipeline
+    End-to-end ETL pipeline
 
-Real job-sourcing automation
+    Real job-sourcing automation
 
-Data filtering engine
+    Data filtering engine
 
-Integration with external APIs
+    Integration with external APIs
 
-Deployable real-world microservice
+    Deployable real-world microservice
 
-Perfect for showcasing automation, data engineering basics, and Python backend skills.
+    Perfect for showcasing automation, data engineering basics, and Python backend skills.
