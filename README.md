@@ -56,20 +56,20 @@ It combines structured scraping + Telegram workflow + live filtering — package
     Job + user actions are logged to Google Sheets
 
 🛠️ Setup
-1️⃣ Install dependencies
-pip install -r requirements.txt
+        1️⃣ Install dependencies
+        pip install -r requirements.txt
 
-2️⃣ Fill .env
-TELEGRAM_BOT_TOKEN=xxx
-SPREADSHEET_ID=xxx
-SERVICE_ACCOUNT_JSON={...}
+        2️⃣ Fill .env
+        TELEGRAM_BOT_TOKEN=xxx
+        SPREADSHEET_ID=xxx
+        SERVICE_ACCOUNT_JSON={...}
 
-3️⃣ Run bot
-python bot.py
+        3️⃣ Run bot
+        python bot.py
 
 ☁️ Deployment (Docker)
-docker build -t jobbot .
-docker run -d jobbot
+        docker build -t jobbot .
+        docker run -d jobbot
 
 🧩 Tech Stack
 
