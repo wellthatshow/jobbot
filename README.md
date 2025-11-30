@@ -1,238 +1,100 @@
-JobBot — це система автоматизованого збору та фільтрування вакансій для
-Data Analyst / Product Analyst / BI Analyst спеціалістів.
+📊 JobBot — Automated Job Scraper & Filter for Data / Product / BI Analysts
 
-Бот:
+JobBot is an automated system for collecting, filtering, and delivering relevant job postings for Data Analyst, Product Analyst, and BI Analyst roles.
 
-отримує вакансії з Djinni через Telegram forward
+It combines structured scraping + Telegram workflow + live filtering — packaged as a lightweight ETL-like automation tool.
 
-додатково парсить DOU
+🚀 Features
+🔎 Data Collection
 
-фільтрує вакансії за досвідом, зарплатою, стеком, локацією
+Receives Djinni job posts via Telegram forwarding
 
-надсилає лише релевантні вакансії в Telegram
+Scrapes DOU job listings
 
-веде лог дій у Google Sheets
+Normalizes data into a unified job format
 
-працює автоматично через APScheduler
+🎯 Smart Filtering
 
-має інтуїтивне меню з кнопками
+Experience level
 
-легко деплоїться через Docker + Railway
+Salary range
 
-Це реальний ETL-проєкт для аналітика з автоматизацією процесів найму.
+Location (Remote / UA / EU / Worldwide)
 
-✔ Автоматизація бізнес-процесів
-✔ Парсинг даних (HTML, Telegram Forward)
-✔ Робота з API Google Sheets
-✔ Зберігання структурованих даних (SQLite)
-✔ Логіка фільтрації SQL-подібного формату
-✔ Scheduler / cron-подібний запуск задач
-✔ Контейнеризація (Docker)
-✔ Деплой на Railway
-✔ Робота зі структурованими джерелами вакансій
+Tech stack (SQL/DWH, BI tools)
 
-🛠 Технології
-Компонент	Технологія
-Telegram Bot	Aiogram 3
-Парсинг	BeautifulSoup
-Джерела	Djinni (Telegram), DOU
-База	SQLite
-Автоматизація	APScheduler
-Логи	Google Sheets API
-Кофінг	python-dotenv
-Деплой	Docker + Railway
+Salary presence (optional)
 
+📬 Delivery
 
-🚀 Як це працює
-1️⃣ Користувач запускає бота
+Sends only matching vacancies to the user
 
-Отримує меню:
+Interactive inline buttons: Good / Maybe / Ignore
 
-▶️ Старт парсингу
+Logs actions & jobs to Google Sheets
 
-⛔ Стоп
+⚙️ Automation
 
-🎛 Фільтри
+Scheduled parsing via APScheduler
 
-🧪 Тест
+Persistent filter settings via SQLite
 
-2️⃣ Фільтри
+Fully containerized with Docker
 
-Доступні:
+🧠 How It Works
 
-Досвід: 0–1 / 1–2 / 2–3 / 3+
+User sets filters (experience, salary, location, stack)
 
-Мінімальна ЗП
+Bot receives jobs from Djinni (forward) or scrapes DOU
 
-Враховувати / ігнорувати вакансії без ЗП
+Job is normalized & stored in SQLite
 
-Локація: Remote / UA / EU / World
+Match is evaluated via filter engine
 
-Стек: SQL/DWH, BI (Tableau/PowerBI/Looker)
+If relevant → sent to user with action buttons
 
-3️⃣ Джерела вакансій
+Job + user actions are logged to Google Sheets
 
-Djinni → Телеграм forward (стабільно працює, без банів)
-
-DOU парсер
-
-4️⃣ Збереження в Google Sheets
-
-Jobs
-
-id
-
-title
-
-salary
-
-description
-
-source
-
-url
-
-Actions
-
-job_id
-
-user_id
-
-action
-
-
-5️⃣ Scheduler
-
-Кожні N хвилин виконується:
-
-збір нових вакансій
-
-фільтрація
-
-надсилання релевантних вакансій у чат
-
-🧩 Архітектура проєкту
-/jobbot
-│ bot.py
-│ config.py
-│ db.py
-│ filters.py
-│ sheets.py
-│ Dockerfile
-│ requirements.txt
-│ .env.example
-│
-└── parsers/
-       dou.py
-       djinni_tg.py
-
-🐳 Docker
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-CMD ["python", "bot.py"]
-
-
-
-🧪 Локальний запуск
+🛠️ Setup
+1️⃣ Install dependencies
 pip install -r requirements.txt
+
+2️⃣ Fill .env
+TELEGRAM_BOT_TOKEN=xxx
+SPREADSHEET_ID=xxx
+SERVICE_ACCOUNT_JSON={...}
+
+3️⃣ Run bot
 python bot.py
 
-📄 Ліцензія
+☁️ Deployment (Docker)
+docker build -t jobbot .
+docker run -d jobbot
 
-MIT — можна використовувати будь-де.
+🧩 Tech Stack
 
+Python (Aiogram, APScheduler, BeautifulSoup)
 
-English Version
+SQLite (lightweight persistent storage)
 
-JobBot — Intelligent Job Monitoring Telegram Bot
-Automated Vacancy Tracking for Data/Product/BI Analysts
-Project Overview
+Google Sheets API
 
-JobBot is an automated system that aggregates and filters job listings for
-Data Analysts, Product Analysts, and BI Analysts.
+Docker
 
-The bot:
+Railway (deploy)
 
-receives job posts from Djinni via Telegram forwarding
+⭐ Why This Project Matters
 
-scrapes DOU job listings
+This bot demonstrates practical automation for analysts:
 
-filters jobs by experience, salary, stack, location
+End-to-end ETL pipeline
 
-sends only relevant jobs to the user
+Real job-sourcing automation
 
-logs user actions in Google Sheets
+Data filtering engine
 
-runs automatically using APScheduler
+Integration with external APIs
 
-provides a clean, interactive UI in Telegram
+Deployable real-world microservice
 
-is fully containerized and deployable on Railway
-
-This is a real-world ETL-style automation project for analysts.
-
-Skills Demonstrated
-
-✔ Automation of repetitive workflows
-✔ Web scraping & HTML parsing
-✔ Integrating Google Sheets API
-✔ Structured data storage (SQLite)
-✔ SQL-like filtering logic in Python
-✔ Scheduled/cron-style background jobs
-✔ Docker containerization
-✔ Railway cloud deployment
-✔ Working with job data sources
-
-🛠 Tech Stack
-Component	Technology
-Telegram Bot	Aiogram 3
-Parsing	BeautifulSoup
-Sources	Djinni (Telegram), DOU
-Database	SQLite
-Automation	APScheduler
-Logs	Google Sheets API
-Config	python-dotenv
-Deployment	Docker + Railway
-🚀 How It Works
-
-1️⃣ User opens the bot and sees the menu
-2️⃣ User configures filters
-3️⃣ Bot processes job posts from Djinni & DOU
-4️⃣ Only matching jobs are forwarded
-5️⃣ User reactions stored for analytics
-6️⃣ Scheduler sends new jobs every N minutes
-
-🧩 Project Structure
-/jobbot
-│ bot.py
-│ config.py
-│ db.py
-│ filters.py
-│ sheets.py
-│ Dockerfile
-│ requirements.txt
-│ .env.example
-│
-└── parsers/
-       dou.py
-       djinni_tg.py
-
-🐳 Docker
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-CMD ["python", "bot.py"]
-
-
-🧪 Local Run
-pip install -r requirements.txt
-python bot.py
-
-📄 License
-
-MIT License
+Perfect for showcasing automation, data engineering basics, and Python backend skills.
